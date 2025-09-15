@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kai's Interactive Playground</title>
+  <!-- external files (style + script) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- page wrapper -->
+  <div id="main-wrapper">
+
+    <!-- header -->
+    <header id="site-header" role="banner">
+      <div id="branding">
+        <span id="logo">🌍 Kai's Playground</span>
+        <button id="theme-toggle" aria-pressed="false" aria-label="Toggle light and dark mode">
+          Toggle theme
+        </button>
+      </div>
+
+      <nav id="main-nav" role="navigation" aria-label="Main">
+        <ul>
+          <li><a href="#interactive">Interactive</a></li>
+          <li><a href="#form-section">Form</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- intro -->
+    <section id="intro">
+      <h1 id="page-title">Event Handling & Interactive Elements</h1>
+      <p class="intro-text">
+        Practice event listeners, DOM updates, interactive widgets, and custom form validation.
+      </p>
+    </section>
+
+    <!-- INTERACTIVE TOOLS: counter + toggles -->
+    <section id="interactive" aria-labelledby="interactive-title">
+      <h2 id="interactive-title">Interactive Features</h2>
+
+      <!-- Feature 1: Counter (simple interactive state) -->
+      <div class="feature" id="counter-feature">
+        <h3>Counter Game</h3>
+        <p>Click to increment. Double-click to reset.</p>
+        <div class="counter-controls">
+          <button id="decrement-btn" aria-label="Decrement">-</button>
+          <div id="counter-display" role="status" aria-live="polite">0</div>
+          <button id="increment-btn" aria-label="Increment">+</button>
+        </div>
+        <div class="counter-actions">
+          <button id="double-btn">Double</button>
+        </div>
+      </div>
+
+      <!-- Feature 2: Toggle / Mode -->
+      <div class="feature" id="mode-feature">
+        <h3>Light / Dark Mode</h3>
+        <p>Toggle the theme. Page will add a class for styling and JS can persist choice.</p>
+        <button id="mode-btn" aria-pressed="false">Switch Theme</button>
+      </div>
+
+      <!-- Feature 3: Dropdown (keyboard accessible) -->
+      <div class="feature" id="dropdown-feature">
+        <h3>Accessible Dropdown</h3>
+        <button id="drop-toggle" aria-haspopup="true" aria-expanded="false">Choose option</button>
+        <ul id="drop-list" class="hidden" role="menu" aria-label="Options">
+          <li role="menuitem"><button class="drop-item">Option A</button></li>
+          <li role="menuitem"><button class="drop-item">Option B</button></li>
+          <li role="menuitem"><button class="drop-item">Option C</button></li>
+        </ul>
+        <p id="drop-selection" class="output-box">Selected: none</p>
+      </div>
+    </section>
+
+    <!-- COLLAPSIBLE FAQ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ - Click headings to toggle</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What is an event listener?</button>
+        <div class="faq-answer hidden">An event listener watches for actions (clicks, keypresses) and runs code when they happen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How do I prevent form submission?</button>
+        <div class="faq-answer hidden">Call event.preventDefault() inside the submit handler to stop the browser's default submit action.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Can JS change CSS?</button>
+        <div class="faq-answer hidden">Yes — JS can toggle classes, alter styles directly, or modify CSS variables at runtime.</div>
+      </div>
+    </section>
+
+    <!-- FORM: custom validation -->
+    <section id="form-section" aria-labelledby="form-title">
+      <h2 id="form-title">Contact Form (Custom Validation)</h2>
+      <form id="contact-form" novalidate>
+        <!-- name -->
+        <label for="input-name">Name</label>
+        <input id="input-name" name="name" type="text" placeholder="Your full name" autocomplete="name" required />
+        <div class="error" id="error-name" aria-live="polite"></div>
+
+        <!-- email -->
+        <label for="input-email">Email</label>
+        <input id="input-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+        <div class="error" id="error-email" aria-live="polite"></div>
+
+        <!-- password -->
+        <label for="input-password">Password</label>
+        <input id="input-password" name="password" type="password" placeholder="At least 8 chars" required />
+        <div class="error" id="error-password" aria-live="polite"></div>
+
+        <!-- confirm -->
+        <label for="input-confirm">Confirm Password</label>
+        <input id="input-confirm" name="confirm" type="password" placeholder="Repeat password" required />
+        <div class="error" id="error-confirm" aria-live="polite"></div>
+
+        <!-- age -->
+        <label for="input-age">Age</label>
+        <input id="input-age" name="age" type="number" min="0" placeholder="E.g., 25" />
+        <div class="error" id="error-age" aria-live="polite"></div>
+
+        <!-- terms -->
+        <div class="checkbox-row">
+          <input id="input-terms" name="terms" type="checkbox" />
+          <label for="input-terms">I agree to the terms</label>
+        </div>
+        <div class="error" id="error-terms" aria-live="polite"></div>
+
+        <!-- submit -->
+        <div class="form-actions">
+          <button id="submit-btn" type="submit">Send</button>
+          <button id="reset-btn" type="button">Reset</button>
+        </div>
+
+        <div id="form-message" class="output-box" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- footer small utilities -->
+    <footer id="page-footer">
+      <small>Built for practice • Events • DOM • Validation</small>
+    </footer>
+  </div>
+
+  <!-- script link -->
+  <script src="script.js" defer></script>
+</body>
+</html>
