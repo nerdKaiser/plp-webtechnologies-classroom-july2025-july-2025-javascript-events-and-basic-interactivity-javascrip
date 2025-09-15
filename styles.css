@@ -1,0 +1,405 @@
+/* ----------------------------
+   Root variables (theme-friendly)
+   - change here to adjust palette
+---------------------------- */
+:root {
+  --bg: #f7f8fb;
+  --panel: #ffffff;
+  --muted: #6b7280;
+  --text: #111827;
+  --accent: #0ea5e9;      /* blue-ish */
+  --accent-2: #ffb020;    /* warm highlight */
+  --success: #16a34a;
+  --danger: #ef4444;
+  --radius: 8px;
+  --shadow: 0 8px 24px rgba(16,24,40,0.06);
+}
+
+/* - Dark theme variables (applied when .dark-theme is on body) */
+.dark-theme {
+  --bg: #0b1220;
+  --panel: #071024;
+  --muted: #9ca3af;
+  --text: #e6eef8;
+  --accent: #38bdf8;
+  --accent-2: #f59e0b;
+  --success: #34d399;
+  --danger: #fb7185;
+  --shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+
+/* ----------------------------
+   Base / Reset
+   - simple, predictable baseline
+---------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  padding: 20px;
+}
+
+/* links and buttons */
+a { color: var(--accent); }
+a:hover { text-decoration: underline; }
+
+/* small utility */
+.hidden { display: none !important; }
+
+/* ----------------------------
+   Page container
+   - center the page and constrain width
+---------------------------- */
+#main-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* ----------------------------
+   Header / branding
+   - uses flex for layout
+---------------------------- */
+#site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  margin-bottom: 18px;
+}
+
+#branding {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#logo {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+#theme-toggle {
+  font-size: 0.9rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: transparent;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* nav */
+#main-nav ul {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+}
+
+#main-nav a {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ----------------------------
+   Intro
+---------------------------- */
+#intro {
+  margin: 18px 0 26px;
+}
+
+#page-title {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.intro-text {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* ----------------------------
+   Sections / feature layout
+   - stack features on small screens, grid on wider
+---------------------------- */
+section {
+  margin-bottom: 22px;
+}
+
+/* Interactive features area */
+#interactive {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+/* feature card base */
+.feature {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(0,0,0,0.01));
+  border-radius: var(--radius);
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Counter controls - small inline layout */
+.counter-controls {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.counter-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--panel);
+  border: 1px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#counter-display {
+  min-width: 64px;
+  text-align: center;
+  font-weight: 700;
+  padding: 8px 10px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+  border-radius: 8px;
+}
+
+/* small action buttons */
+.counter-actions, .feature .actions {
+  margin-top: 10px;
+}
+
+.feature button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.feature button.secondary {
+  background: var(--accent-2);
+  color: #111;
+}
+
+/* ----------------------------
+   Dropdown feature
+   - dropdown list visually hidden by default
+---------------------------- */
+#drop-list {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: var(--panel);
+  width: max-content;
+  box-shadow: var(--shadow);
+}
+
+#drop-list button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#drop-selection {
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* ----------------------------
+   FAQ styles (collapsible)
+---------------------------- */
+.faq-item {
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.04);
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.faq-answer {
+  margin-top: 8px;
+  padding: 10px;
+  border-left: 3px solid rgba(0,0,0,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius: 6px;
+}
+
+/* ----------------------------
+   Form area - clean and instructive
+   - errors and success styles included
+---------------------------- */
+#form-section {
+  background: var(--panel);
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+#contact-form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+#contact-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.form-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+#submit-btn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#reset-btn {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+/* errors + success feedback */
+.error {
+  color: var(--danger);
+  margin-top: 6px;
+  font-size: 0.9rem;
+  min-height: 20px; /* reserve space so layout doesn't jump */
+}
+
+.output-box {
+  margin-top: 8px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* form message */
+#form-message {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(14,165,233,0.06);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* small utilities */
+.checkbox-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* ----------------------------
+   Footer
+---------------------------- */
+#page-footer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(0,0,0,0.04);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ----------------------------
+   Responsive breakpoints
+   - adjust layout for larger/smaller screens
+---------------------------- */
+@media (min-width: 700px) {
+  #interactive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature {
+    min-height: 120px;
+  }
+}
+
+@media (min-width: 980px) {
+  #interactive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #main-wrapper {
+    padding: 28px;
+  }
+}
+
+/* ----------------------------
+   Focus and accessibility helpers
+---------------------------- */
+button:focus, input:focus, textarea:focus {
+  outline: 3px solid rgba(14,165,233,0.18);
+  outline-offset: 3px;
+}
+
+/* small visual helpers for testing box model (turn on in dev if needed)
+   - comment out in production */
+.dev-outline * {
+  outline: 1px dashed rgba(255,0,0,0.08);
+}
